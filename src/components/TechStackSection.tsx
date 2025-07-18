@@ -11,7 +11,8 @@ import {
   SiFramer,
   SiGit,
   SiPostgresql,
-  SiMysql
+  SiMysql,
+  SiNodedotjs
 } from 'react-icons/si';
 
 const technologies = [
@@ -25,7 +26,8 @@ const technologies = [
   { name: 'Framer Motion', icon: SiFramer },
   { name: 'Git', icon: SiGit },
   { name: 'PostgreSQL', icon: SiPostgresql },
-  { name: 'MySQL', icon: SiMysql }
+  { name: 'MySQL', icon: SiMysql },
+  { name: 'Node.js', icon: SiNodedotjs }
 ];
 
 export const TechStackSection: React.FC = () => {

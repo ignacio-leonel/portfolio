@@ -42,7 +42,7 @@ const About: React.FC = () => {
           y emprendimientos que quieren tener presencia en internet sin complicarse con lo técnico.
         </motion.p>
 
-        /*
+      
         {/* Párrafo 3 */}
         <motion.p
           className="text-lg md:text-xl leading-relaxed text-slate-200"
