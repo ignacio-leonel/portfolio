@@ -1,6 +1,7 @@
 import React from 'react';
 import { ExternalLink, Github, Eye } from 'lucide-react';
 import { Project } from '../data/projects';
+import { motion } from 'framer-motion';
 
 interface PortfolioCardProps {
   project: Project;
@@ -8,15 +9,26 @@ interface PortfolioCardProps {
 
 export const PortfolioCard: React.FC<PortfolioCardProps> = ({ project }) => {
   return (
-    <div className="group relative bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-slate-800/70 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-cyan-500/10">
-      {/* Featured Badge */}
+    
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="group relative bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-slate-800/70 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-cyan-500/10"
+    >
       {project.featured && (
-        <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-900 px-3 py-1 rounded-full text-xs font-semibold">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="absolute top-4 left-4 z-10 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-900 px-3 py-1 rounded-full text-xs font-semibold"
+        >
           Destacado
-        </div>
+        </motion.div>
       )}
-      
-      {/* Image Container */}
+
       <div className="relative h-48 overflow-hidden">
         <img
           src={project.image}
@@ -24,8 +36,6 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({ project }) => {
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        
-        {/* Overlay Buttons */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="flex gap-3">
             {project.live && (
@@ -54,23 +64,39 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({ project }) => {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-3">
+      <div className="p-6 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="flex items-center justify-between"
+        >
           <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
             {project.title}
           </h3>
           <span className="text-xs text-cyan-400 bg-cyan-400/10 px-2 py-1 rounded-full">
             {project.category}
           </span>
-        </div>
-        
-        <p className="text-slate-300 text-sm mb-4 line-clamp-3">
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="text-slate-300 text-sm line-clamp-3"
+        >
           {project.description}
-        </p>
-        
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="flex flex-wrap gap-2"
+        >
           {project.tech.map((tech, index) => (
             <span
               key={index}
@@ -79,10 +105,15 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({ project }) => {
               {tech}
             </span>
           ))}
-        </div>
-        
-        {/* Action Buttons */}
-        <div className="flex gap-3 pt-4 border-t border-slate-700">
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="flex gap-3 pt-4 border-t border-slate-700"
+        >
           {project.live && (
             <a
               href={project.live}
@@ -105,8 +136,8 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({ project }) => {
               Código fuente
             </a>
           )}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
